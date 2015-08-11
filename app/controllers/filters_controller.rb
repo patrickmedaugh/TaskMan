@@ -1,3 +1,4 @@
+require 'responders'
 class FiltersController < ApplicationController
   respond_to :json
 

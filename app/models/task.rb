@@ -2,12 +2,11 @@ class Task < ActiveRecord::Base
   belongs_to :list
 
   validates :title, presence: true
-  validate :dates_are_valid
+  validates_with DateValidator
 
-  def dates_are_valid
-    if start_date && due_date
-
-    end
+  def self.current
+    where("start_date > ?", DateTime.now.to_date)
   end
-
 end
+
+

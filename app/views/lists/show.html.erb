@@ -7,7 +7,9 @@
       <p><%= task.start_date %></p>
       <p><%= task.due_date %></p>
       <p><%= task.status %></p>
-      </li>
+      <%= link_to "Delete Task", list_task_path(list_id: @list.id, id: task.id), method: :delete %>
+    </li>
+
     <% end %>
     <p><%= link_to "Add Task", new_list_task_path(@list.id) %>
     <%= link_to "All Lists", lists_path %></p>

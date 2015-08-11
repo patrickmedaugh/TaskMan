@@ -5,6 +5,7 @@
   <button id="title-sort-<%=list.id%>" class="title-sort" data="<%=list.id%>">Title</button>
   <button id="status-sort-<%=list.id%>" class="status-sort" data="<%=list.id%>">Status</button>
   <button id="due-date-sort-<%=list.id%>" class="due-date-sort" data="<%=list.id%>">Due Date</button>
+  <div id="tasks-<%=list.id%>">
   <ul>
   <% list.tasks.each do |task| %>
     <li>
@@ -18,6 +19,7 @@
     <% end %>
     <h4><%= link_to "Add Task", new_list_task_path(list.id) %></h4>
     </ul>
+  </div>
 
   <% end %>
   <%= link_to "New List", new_list_path %>
