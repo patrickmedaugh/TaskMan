@@ -1,0 +1,14 @@
+<%= form_for [@task.list, @task] do |f| %>
+  <p><%= f.label :title %></p>
+  <p><%= f.text_field :title, value: @task.title %></p>
+  <p><%= f.label :notes %></p>
+  <p><%= f.text_area :notes, value: @task.notes %></p>
+  <p><%= f.label :start_date %></p>
+  <p><%= f.date_field :start_date, value: @task.start_date %></p>
+  <p><%= f.label :due_date %></p>
+  <p><%= f.date_field :due_date, value: @task.due_date %></p>
+  <p><%= f.label :status %></p>
+  <p><%= f.select :status, ["incomplete", "complete"], value: @task.status%></p>
+  <p><%= f.hidden_field :list_id, value: params[:list_id]%>
+  <p><%= f.submit %></p>
+<% end %>

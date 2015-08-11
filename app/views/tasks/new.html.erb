@@ -9,5 +9,6 @@
   <p><%= f.date_field :due_date %></p>
   <p><%= f.label :status %></p>
   <p><%= f.select :status, ["incomplete", "complete"] %></p>
+  <p><%= f.hidden_field :list_id, value: params[:list_id]%>
   <p><%= f.submit %></p>
 <% end %>

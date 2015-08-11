@@ -1,0 +1,14 @@
+<h1><%= @list.title %></h1>
+<h3><%= @list.description %></h3>
+  <% @list.tasks.each do |task| %>
+    <li>
+      <p><%=task.title %></p>
+      <p><%= task.notes %></p>
+      <p><%= task.start_date %></p>
+      <p><%= task.due_date %></p>
+      <p><%= task.status %></p>
+      </li>
+    <% end %>
+    <%= link_to "Add Task", new_list_task_path(@list.id) %>
+    <%= link_to "All Lists", lists_path %>
+
