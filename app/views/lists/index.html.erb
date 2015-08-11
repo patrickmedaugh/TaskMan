@@ -1,0 +1,18 @@
+<h1>Here are some lists ya dummy</h1>
+<% @lists.each do |list| %>
+  <h3><%= list.title %></h3>
+  <p><%= list.description %></p>
+  <ul>
+  <% list.tasks.each do |task| %>
+    <li>
+      <p><%=task.title %></p>
+      <p><%= task.description %></p>
+      <p><%= task.start_date %></p>
+      <p><%= task.due_date %></p>
+      <p><%= task.status %></p>
+      </li>
+    <% end %>
+    </ul>
+
+  <% end %>
+  <%= link_to "New List", new_list_path %>
