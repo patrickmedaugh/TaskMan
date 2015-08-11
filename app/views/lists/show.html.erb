@@ -15,7 +15,8 @@
       <p><%= task.start_date %></p>
       <p><%= task.due_date %></p>
       <p><%= task.status %></p>
-      <%= link_to "Delete Task", list_task_path(list_id: @list.id, id: task.id), method: :delete %>
+      <button id="complete-task-<%=task.id%>">Complete Task</button>
+      <button id="incomplete-task-<%=task.id%>">Incomplete Task</button>
     </li>
   <% end %>
 </div>

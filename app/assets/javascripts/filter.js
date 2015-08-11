@@ -12,12 +12,13 @@ function sortListener(type) {
       $taskArea.empty();
       tasks.forEach(function (task) {
         console.log(task);
-        $taskArea.append('<p>' + task.title + '</p>');
+        $taskArea.append('<li><p>' + task.title + '</p>');
         $taskArea.append('<p>' + task.notes + '</p>');
         $taskArea.append('<p>' + task.start_date + '</p>');
         $taskArea.append('<p>' + task.due_date + '</p>');
         $taskArea.append('<p>' + task.status + '</p>');
-        $taskArea.append("<a rel='nofollow' data-method='delete' href='/lists/" + listId + "/tasks/" + task.id + "'>Delete Task</a>");
+        $taskArea.append('<button id=complete-task-' + task.id + '>Complete Task</button');
+        $taskArea.append('<button id=incomplete-task-' + task.id + '>Incomplete Task</button');
       });
     });
   });
