@@ -12,6 +12,7 @@
       <p><%= task.status %></p>
       </li>
     <% end %>
+    <%= link_to "Add Task", new_list_task_path(list.id) %>
     </ul>
 
   <% end %>

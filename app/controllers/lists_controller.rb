@@ -1,4 +1,4 @@
-class ListController < ApplicationController
+class ListsController < ApplicationController
   def index
     @lists = List.all
   end
@@ -8,7 +8,7 @@ class ListController < ApplicationController
   end
 
   def new
-
+    @list = List.new
   end
 
   def create
