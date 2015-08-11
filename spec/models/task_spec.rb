@@ -28,4 +28,20 @@ RSpec.describe Task, type: :model do
       expect(task).to_not be_valid
     end
   end
+
+  context 'when dates are less than today' do
+    let(:task) {
+      Task.create(title: "Title")
+    }
+
+    it 'is invalid on start date' do
+      task.start_date = "February 10, 2013"
+      expect(task).to_not be_valid
+    end
+
+    it 'is invalid on due date' do
+      task.due_date = "February 10. 2013"
+      expect(task).to_not be_valid
+    end
+  end
 end

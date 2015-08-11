@@ -9,6 +9,8 @@
       <p><%= task.status %></p>
       </li>
     <% end %>
-    <%= link_to "Add Task", new_list_task_path(@list.id) %>
-    <%= link_to "All Lists", lists_path %>
+    <p><%= link_to "Add Task", new_list_task_path(@list.id) %>
+    <%= link_to "All Lists", lists_path %></p>
+    <%= link_to "Edit List", edit_list_path(@list) %>
+    <%= link_to "Delete List", list_path(@list), method: :delete %>
 

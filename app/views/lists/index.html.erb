@@ -2,7 +2,9 @@
 <% @lists.each do |list| %>
   <h3><%= link_to list.title, list_path(list) %></h3>
   <p><%= list.description %></p>
-  <%= link_to "Edit List", edit_list_path(list) %>
+  <button id="title-sort-<%=list.id%>" class="title-sort" data="<%=list.id%>">Title</button>
+  <button id="status-sort-<%=list.id%>" class="status-sort" data="<%=list.id%>">Status</button>
+  <button id="due-date-sort-<%=list.id%>" class="due-date-sort" data="<%=list.id%>">Due Date</button>
   <ul>
   <% list.tasks.each do |task| %>
     <li>
