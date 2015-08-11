@@ -7,7 +7,7 @@ RSpec.describe Task, type: :model do
     }
 
     let(:task){
-      Task.create(title: "Title", status: "incomplete", notes: "I should do this thing", start_date: "February 9, 2015", due_date: "August 14, 2015", list_id: list.id )
+      Task.create(title: "Title", status: "incomplete", notes: "I should do this thing", start_date: "August 13, 2115", due_date: "August 14, 2115", list_id: list.id )
     }
 
     it 'is valid' do
@@ -21,7 +21,7 @@ RSpec.describe Task, type: :model do
 
   context 'without a title' do
     let(:task){
-      Task.create(status: "incomplete", notes: "I should do this thing", start_date: "February 9, 2015", due_date: "August 14, 2015" )
+      Task.create(status: "incomplete", notes: "I should do this thing", start_date: "August 13, 2115", due_date: "August 14, 2115" )
     }
 
     it 'is invalid' do
@@ -30,18 +30,19 @@ RSpec.describe Task, type: :model do
   end
 
   context 'when dates are less than today' do
-    let(:task) {
-      Task.create(title: "Title")
+    let(:start_task) {
+      Task.create(title: "Title", start_date: "February 10, 2013", due_date: "August 14, 2100")
     }
 
+    let(:end_task){
+      Task.create(title: "Title", start_date: "August 14, 2100", due_date: "August 1, 2100")
+    }
     it 'is invalid on start date' do
-      task.start_date = "February 10, 2013"
-      expect(task).to_not be_valid
+      expect(start_task).to_not be_valid
     end
 
     it 'is invalid on due date' do
-      task.due_date = "February 10. 2013"
-      expect(task).to_not be_valid
+      expect(end_task).to_not be_valid
     end
   end
 end

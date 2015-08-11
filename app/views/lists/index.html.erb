@@ -2,18 +2,11 @@
 <% @lists.each do |list| %>
   <h3><%= link_to list.title, list_path(list) %></h3>
   <p><%= list.description %></p>
-  <button id="title-sort-<%=list.id%>" class="title-sort" data="<%=list.id%>">Title</button>
-  <button id="status-sort-<%=list.id%>" class="status-sort" data="<%=list.id%>">Status</button>
-  <button id="due-date-sort-<%=list.id%>" class="due-date-sort" data="<%=list.id%>">Due Date</button>
   <div id="tasks-<%=list.id%>">
   <ul>
-  <% list.tasks.each do |task| %>
+  <% list.active.each do |task| %>
     <li>
       <p><%=task.title %></p>
-      <p><%= task.notes %></p>
-      <p><%= task.start_date %></p>
-      <p><%= task.due_date %></p>
-      <p><%= task.status %></p>
       <h6><%= link_to "Edit Task", edit_list_task_path(list, task) %></h6>
       </li>
     <% end %>
