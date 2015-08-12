@@ -3,6 +3,9 @@ $(document).ready(function () {
   sortListener('status');
   sortListener('due-date');
   searchFilter();
+  filterListener('start-date');
+  filterListener('due-date');
+  filterListener('status');
   tagSort();
 });
 
@@ -78,4 +81,18 @@ function tagSort () {
       addTaskToArea($taskArea, tasks, listId );
     })
   });
+}
+
+function filterListener (type) {
+  $('.' + type + '-filter').on('change', function () {
+    listId = $(this).attr('data');
+    $taskArea = $('#tasks-' + listId);
+    userInput = $(this).val();
+    console.log('youbetcha');
+    console.log(userInput);
+    $.getJSON('/filter/' + type + '/' + userInput, function (tasks) {
+      $taskArea.empty();
+      addTaskToArea($taskArea, tasks, listId);
+    })
+  })
 }

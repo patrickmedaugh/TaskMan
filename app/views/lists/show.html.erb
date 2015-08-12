@@ -11,10 +11,10 @@
 <%= link_to "Delete List", list_path(@list), method: :delete %>
 <h3><%= @list.description %></h3>
 <h4>Filter by:</h4>
-<input type="date" class="start-date-filter"></input>
-<input type="date" class="due-date-filter"></input>
+<input type="date" class="start-date-filter" data="<%= @list.id %>"></input>
+<input type="date" class="due-date-filter" data="<%= @list.id %>"></input>
 
-<select class="status-filter">
+<select class="status-filter" data="<%= @list.id %>">
   <option disabled selected> -- status -- </option>
   <option value="complete">complete</option>
   <option value="incomplete">incomplete</option>
