@@ -12,3 +12,12 @@
   <p><%= f.hidden_field :list_id, value: params[:list_id]%>
   <p><%= f.submit %></p>
 <% end %>
+<h6>
+  <div class="tags">
+    <%@task.tags.each do |tag| %>
+      <%= tag.name %>
+    <%end%>
+  </div>
+</h6>
+
+<input id="tagname-<%=@task.id%>"></input><button class="add-tag" data="<%=@task.id%>">Add Tag</button>

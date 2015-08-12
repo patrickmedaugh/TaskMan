@@ -10,4 +10,12 @@ class List < ActiveRecord::Base
   def scheduled
     tasks.where("status = 'incomplete' AND start_date > ? AND list_id = ?", DateTime.now.to_date, self.id)
   end
+
+  def all_tags
+    tags = []
+    tasks.each do |task|
+      tags << task.tags
+    end
+    tags
+  end
 end

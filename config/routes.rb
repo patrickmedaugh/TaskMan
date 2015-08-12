@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
+  #Add Tag
+  get 'add-tag/:id/:name', to: 'tags#create', as: 'new_tag'
+
   #AJAX filters
   get '/filter/title/:id', to: 'filters#title', as: 'filter_title'
   get '/filter/status/:id', to: 'filters#status', as: 'filter_status'
