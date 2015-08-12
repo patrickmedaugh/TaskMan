@@ -4,9 +4,9 @@
   <p><%= f.label :notes %></p>
   <p><%= f.text_area :notes, value: @task.notes %></p>
   <p><%= f.label :start_date %></p>
-  <p><%= f.date_field :start_date, value: @task.start_date %></p>
+  <p><%= f.date_field :start_date, default: @task.start_date %></p>
   <p><%= f.label :due_date %></p>
-  <p><%= f.date_field :due_date, value: @task.due_date %></p>
+  <p><%= f.date_field :due_date, default: @task.due_date %></p>
   <p><%= f.label :status %></p>
   <p><%= f.select :status, ["incomplete", "complete"], value: @task.status%></p>
   <p><%= f.hidden_field :list_id, value: params[:list_id]%>
@@ -15,7 +15,7 @@
 <h6>
   <div class="tags">
     <%@task.tags.each do |tag| %>
-      <%= tag.name %>
+      <%= tag.name %> &nbsp &nbsp
     <%end%>
   </div>
 </h6>

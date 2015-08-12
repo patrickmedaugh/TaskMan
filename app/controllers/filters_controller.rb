@@ -23,6 +23,12 @@ class FiltersController < ApplicationController
     respond_with @tasks
   end
 
+  def search_tags
+    task = Task.find(params[:id])
+    @tags = task.tags
+    respond_with @tags
+  end
+
   def search_reset
     @tasks = Task.where(list_id: params[:id])
     respond_with @tasks

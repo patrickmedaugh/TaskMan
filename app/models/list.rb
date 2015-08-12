@@ -16,6 +16,6 @@ class List < ActiveRecord::Base
     tasks.each do |task|
       tags << task.tags
     end
-    tags
+    tags.flatten
   end
 end

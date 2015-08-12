@@ -9,7 +9,7 @@ function addTag () {
     if (tagName !== "") {
       $.getJSON('/add-tag/' + taskId + '/' + tagName, function (tag) {
         console.log(tag);
-        $('.tags').append(" " + tag.name);
+        $('.tags').append("   " + tag.name);
       })
     }
   });

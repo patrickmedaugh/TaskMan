@@ -1,5 +1,11 @@
 <%= link_to "All Lists", lists_path %>
 <h1><%= @list.title %></h1>
+<h6>
+  <% @list.all_tags.each do |tag| %>
+    <% puts @list.all_tags %>
+    <%= tag.name%> &nbsp
+  <% end %>
+</h6>
 <%= link_to "Edit List", edit_list_path(@list) %>
 <%= link_to "Delete List", list_path(@list), method: :delete %>
 <h3><%= @list.description %></h3>
@@ -17,9 +23,9 @@
       <p id="status-<%=task.id%>" data="<%=task.id%>"><%= task.status %></p>
       <button class="complete" id="complete-task-<%=task.id%>" data="<%=task.id%>">Complete Task</button>
       <button class="incomplete" id="incomplete-task-<%=task.id%>" data="<%=task.id%>">Incomplete Task</button>
-      <h5>Tags:
+      <h5>Tags: &nbsp
         <% task.tags.each do |tag| %>
-          <%= tag.name %>
+          <%= tag.name %> &nbsp &nbsp
         <%end%>
       </h5>
       <h6><%= link_to "Edit Task", edit_list_task_path(@list, task) %></h6>

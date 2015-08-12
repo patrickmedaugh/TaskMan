@@ -13,5 +13,8 @@
     </ul>
   </div>
 
+  <% list.all_tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag.id) %>
   <% end %>
-  <%= link_to "New List", new_list_path %>
+<% end %>
+<p><%= link_to "New List", new_list_path %></p>

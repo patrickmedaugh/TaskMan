@@ -1,0 +1,16 @@
+<h1>Tasks</h1>
+<% @tasks.each do |task| %>
+    <li>
+      <p><%= task.title %></p>
+      <p><%= task.notes %></p>
+      <p><%= task.start_date %></p>
+      <p><%= task.due_date %></p>
+      <p><%= task.status %></p>
+      <p>Belongs to list: <%= task.list.title %></p>
+      <p>Tags:
+      <% task.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+      </p>
+    </li>
+  <% end %>

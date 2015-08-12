@@ -7,6 +7,10 @@ class TagsController < ApplicationController
   end
 
   def show
-    #Task.all(where task.tags.each.name == params[:name])
+    tag = Tag.find(params[:id])
+    tasks = Task.all
+    @tasks = tasks.select do |task|
+      task.tags.any?{ |t| t.name == tag.name }
+    end
   end
 end

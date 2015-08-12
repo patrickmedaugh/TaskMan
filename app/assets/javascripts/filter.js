@@ -30,6 +30,13 @@ function addTaskToArea (area, tasks, listId) {
     area.append('<button class="complete" data="' + task.id + '">Complete Task</button> ');
     area.append('<button class="incomplete" data="' + task.id + '">Incomplete Task</button> ');
     area.append('<h6><a href="/lists/' + listId + '/tasks/' + task.id + '/edit">Edit Task</a></h6>');
+    area.append('<h5>Tags: ');
+    $.getJSON('/filter/search-tags/' + task.id, function (tags) {
+      tags.forEach(function (tag) {
+        area.append(tag.name + "  ");
+      });
+    });
+    area.append('</h5>');
   });
 };
 
@@ -44,7 +51,6 @@ function searchFilter () {
     $taskArea = $('#tasks-' + listId);
     if (search !== "") {
       $.getJSON('/filter/search/'+ listId + '/' + search, function (tasks) {
-        console.log(tasks);
         $taskArea.empty();
         addTaskToArea($taskArea, tasks, listId);
       });
