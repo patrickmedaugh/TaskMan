@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/filter/title/:id', to: 'filters#title', as: 'filter_title'
   get '/filter/status/:id', to: 'filters#status', as: 'filter_status'
   get '/filter/due-date/:id', to: 'filters#due_date', as: 'filter_due_date'
+  get '/filter/search/:id/:term', to: 'filters#search', as: 'filter_search'
+  get '/filter/search-reset/:id', to: 'filters#search_reset', as: 'filter_search_reset'
 
   #AJAX status updaters
   get '/status/complete/:id', to: 'statuses#complete', as: 'status_complete'

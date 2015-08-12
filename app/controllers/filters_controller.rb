@@ -16,4 +16,15 @@ class FiltersController < ApplicationController
     @tasks = Task.where(list_id: params[:id]).order(:due_date)
     respond_with @tasks
   end
+
+  def search
+    @tasks = Task.where(list_id: params[:id])
+    @tasks = @tasks.select{ |task| task.title.include?(params[:term]) }
+    respond_with @tasks
+  end
+
+  def search_reset
+    @tasks = Task.where(list_id: params[:id])
+    respond_with @tasks
+  end
 end

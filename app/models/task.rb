@@ -3,7 +3,6 @@ class Task < ActiveRecord::Base
 
   validates :title, presence: true
   validates_with DateValidator
-
 end
 
 
