@@ -88,9 +88,8 @@ function filterListener (type) {
     listId = $(this).attr('data');
     $taskArea = $('#tasks-' + listId);
     userInput = $(this).val();
-    console.log('youbetcha');
-    console.log(userInput);
-    $.getJSON('/filter/' + type + '/' + userInput, function (tasks) {
+    $taskArea.empty();
+    $.getJSON('/filter/' + type + '/' + listId + '/' + userInput, function (tasks) {
       $taskArea.empty();
       addTaskToArea($taskArea, tasks, listId);
     })

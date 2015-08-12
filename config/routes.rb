@@ -15,14 +15,13 @@ Rails.application.routes.draw do
   get '/sort/due-date/:id', to: 'sorts#due_date', as: 'sort_due_date'
 
   #AJAX filters
-  get '/filter/title/:id', to: 'filters#title', as: 'filter_title'
-  get '/filter/status/:status', to: 'filters#status', as: 'filter_status'
-  get '/filter/due-date/:due_date', to: 'filters#due_date', as: 'filter_due_date'
+  get '/filter/status/:id/:status', to: 'filters#status', as: 'filter_status'
+  get '/filter/due-date/:id/:due_date', to: 'filters#due_date', as: 'filter_due_date'
   get '/filter/search/:id/:term', to: 'filters#search', as: 'filter_search'
   get '/filter/search-reset/:id', to: 'filters#search_reset', as: 'filter_search_reset'
   get '/filter/search-tags/:id', to: 'filters#search_tags', as: 'filter_search_tags'
   get '/filter/tags/:name', to: 'filters#tags', as: 'filter_tags'
-  get '/filter/start-date/:start_date', to: 'filters#start_date', as: 'filter_start_date'
+  get '/filter/start-date/:id/:start_date', to: 'filters#start_date', as: 'filter_start_date'
 
 
   #AJAX status updaters

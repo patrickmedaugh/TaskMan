@@ -3,17 +3,17 @@ class FiltersController < ApplicationController
   respond_to :json
 
   def start_date
-    @tasks = Task.where(start_date: params[:start_date])
+    @tasks = Task.where(start_date: params[:start_date]).where(list_id: params[:id])
     respond_with @tasks
   end
 
   def status
-    @tasks = Task.where(status: params[:status])
+    @tasks = Task.where(status: params[:status]).where(list_id: params[:id])
     respond_with @tasks
   end
 
   def due_date
-    @tasks = Task.where(due_date: params[:due_date])
+    @tasks = Task.where(due_date: params[:due_date]).where(list_id: params[:id])
     respond_with @tasks
   end
 
