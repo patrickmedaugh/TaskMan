@@ -3,13 +3,14 @@ $(document).ready(function () {
   sortListener('status');
   sortListener('due-date');
   searchFilter();
+  tagSort();
 });
 
 function sortListener (type) {
   $('.' + type + '-sort').on('click', function () {
     listId = $(this).attr('data');
     $taskArea = $('#tasks-' + listId);
-    $.getJSON( "/filter/" + type + "/" + listId, function (tasks) {
+    $.getJSON( "/sort/" + type + "/" + listId, function (tasks) {
       $taskArea.empty();
       addTaskToArea($taskArea, tasks, listId);
     });
@@ -30,7 +31,6 @@ function addTaskToArea (area, tasks, listId) {
     area.append('<button class="complete" data="' + task.id + '">Complete Task</button> ');
     area.append('<button class="incomplete" data="' + task.id + '">Incomplete Task</button> ');
     area.append('<h6><a href="/lists/' + listId + '/tasks/' + task.id + '/edit">Edit Task</a></h6>');
-    area.append('<h5>Tags: ');
     $.getJSON('/filter/search-tags/' + task.id, function (tags) {
       tags.forEach(function (tag) {
         area.append(tag.name + "  ");
@@ -66,4 +66,16 @@ function searchFilter () {
       addTaskToArea($taskArea, tasks, listId);
     });
   })
+}
+
+function tagSort () {
+  $('.tag-sort').on('click', function () {
+    tagName = $(this).attr('data');
+    $taskArea = $('.tasks')
+    listId = $taskArea.attr('data');
+    $.getJSON('/filter/tags/' + tagName, function (tasks) {
+      $taskArea.empty();
+      addTaskToArea($taskArea, tasks, listId );
+    })
+  });
 }

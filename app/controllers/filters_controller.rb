@@ -2,18 +2,18 @@ require 'responders'
 class FiltersController < ApplicationController
   respond_to :json
 
-  def title
-    @tasks = Task.where(list_id: params[:id]).order(:title)
+  def start_date
+    @tasks = Task.where(start_date: params[:start_date])
     respond_with @tasks
   end
 
   def status
-    @tasks = Task.where(list_id: params[:id]).order(:status)
+    @tasks = Task.where(status: params[:status])
     respond_with @tasks
   end
 
   def due_date
-    @tasks = Task.where(list_id: params[:id]).order(:due_date)
+    @tasks = Task.where(due_date: params[:due_date])
     respond_with @tasks
   end
 
@@ -31,6 +31,14 @@ class FiltersController < ApplicationController
 
   def search_reset
     @tasks = Task.where(list_id: params[:id])
+    respond_with @tasks
+  end
+
+  def tags
+    @tasks = Task.all
+    @tasks = @tasks.select do |task|
+      task.tags.any? { |t| t.name == params[:name] }
+    end
     respond_with @tasks
   end
 end
